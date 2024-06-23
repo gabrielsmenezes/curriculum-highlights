@@ -1,13 +1,13 @@
 export abstract class GenericPacket {
   operation: Operation;
   serviceOrder: ServiceOrder;
-  equipament: Equipament;
+  equipment: equipment;
   cryptoService: CryptoService;
 
-  protected constructor(operation: Operation, serviceOrder: ServiceOrder, equipament: Equipament) {
+  protected constructor(operation: Operation, serviceOrder: ServiceOrder, equipment: equipment) {
     this.operation = operation;
     this.serviceOrder = serviceOrder;
-    this.equipament = equipament;
+    this.equipment = equipment;
     this.cryptoService = new CryptoService();
   }
 
@@ -20,8 +20,8 @@ export abstract class GenericPacket {
     const userId = this.convertToHex(String(executer.id), 4);
     const uc = this.convertToHex(residence.uc, 4);
     const dateTime = this.convertToHex(this.formatDate(new Date()), 12);
-    const firmwareVersion = this.floatToHex(this.equipament.versaoSw, 4);
-    const serialNumber = this.equipament.MAC.padStart(6, "0").toUpperCase();
+    const firmwareVersion = this.floatToHex(this.equipment.versaoSw, 4);
+    const serialNumber = this.equipment.MAC.padStart(6, "0").toUpperCase();
     const phase = this.convertToHex(residence.phase, 1);
 
     let response = Buffer.from("[").toString("hex");

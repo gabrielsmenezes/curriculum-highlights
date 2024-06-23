@@ -1,6 +1,6 @@
 
 export abstract class OperationPacketBuilder {
-  public static getPacket(operation: Operation, serviceOrder: ServiceOrder, relig: Equipament, crib?: Equipament): GenericPacket {
+  public static getPacket(operation: Operation, serviceOrder: ServiceOrder, relig: equipment, crib?: equipment): GenericPacket {
     switch (operation.shortname) {
     case "H": {
       return new AtualizarUCeBlowfish(operation, serviceOrder, relig);
